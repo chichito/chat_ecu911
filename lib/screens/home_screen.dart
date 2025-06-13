@@ -90,14 +90,13 @@ class HomeScreen extends StatelessWidget {
                             //padding: EdgeInsets.symmetric(vertical: 16),
                           ),
                           onPressed: () {
-                            print('Sign up with email');
                             Navigator.pushNamed(
                               context,
                               RegisterScreen.routeName,
                             );
                           },
                           child: Text(
-                            "Sign up with emaill",
+                            "Sign up with email",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
