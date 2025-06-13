@@ -57,6 +57,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ],
                   ),
                 ),
+                SizedBox(height: 20),
                 Text(
                   'Get chatting with friends and family today by signing up for our chat app!',
                   style: TextStyle(
@@ -65,7 +66,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                //SizedBox(height: 16),
+                SizedBox(height: 30),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 16),
                   child: Form(
