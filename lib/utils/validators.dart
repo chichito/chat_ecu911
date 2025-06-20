@@ -19,13 +19,23 @@ class Validators {
     if (password == null || password.isEmpty)
       return 'Ingresa una contraseña válida';
 
-    // Validar que la contraseña tenga al menos 8 caracteres, una mayúscula, una minúscula y un número
-    final regExpr = RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$');
+    // Validar que la contraseña tenga al menos 6 caracteres, una mayúscula, una minúscula y un número
+    final regExpr = RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$');
 
     if (regExpr.hasMatch(password)) {
       return null;
     } else {
-      return 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número';
+      return 'La contraseña debe tener al menos 6 caracteres, una mayúscula, una minúscula y un número';
     }
+  }
+
+  /// Validación para el nombre
+  ///
+  /// Verifica que el nombre tenga como minímo 2 caracteres
+  static String? validateName(String? name) {
+    if (name == null || name.isEmpty || name.length < 2) {
+      return 'Ingresa un nombre válido';
+    }
+    return null;
   }
 }

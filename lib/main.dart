@@ -1,13 +1,19 @@
+import 'package:chat_ecu911/firebase_options.dart';
 import 'package:chat_ecu911/ui/core/navigation/app_navigator.dart';
 import 'package:chat_ecu911/ui/core/themes/theme.dart';
 import 'package:chat_ecu911/ui/login/view/login_page.dart';
 import 'package:chat_ecu911/ui/onboarding/view/onboarding_page.dart';
 import 'package:chat_ecu911/ui/sign_up/cubit/cubit/sign_up_cubit.dart';
 import 'package:chat_ecu911/ui/sign_up/view/sign_up_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  DefaultFirebaseOptions
+      .currentPlatform; // Ensure the Firebase options are initialized
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 

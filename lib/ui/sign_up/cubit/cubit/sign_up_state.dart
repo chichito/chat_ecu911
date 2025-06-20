@@ -1,18 +1,28 @@
 part of 'sign_up_cubit.dart';
 
+enum Status {
+  initial,
+  loading,
+  passwordTooWeek,
+  emailAlreadyRegistered,
+  success,
+  failed,
+  passwordMismatch,
+}
+
 class SignUpState {
   final String? name;
   final String? email;
   final String? password;
   final String? confirmPassword;
-  final bool passwordsMatch;
+  final Status? status;
 
   SignUpState({
     this.name,
     this.email,
     this.password,
     this.confirmPassword,
-    this.passwordsMatch = true,
+    this.status = Status.initial,
   });
   //metodo copyWith
   SignUpState copyWith({
@@ -20,14 +30,14 @@ class SignUpState {
     String? email,
     String? password,
     String? confirmPassword,
-    bool? passwordsMatch,
+    Status? status,
   }) {
     return SignUpState(
       name: name ?? this.name,
       email: email ?? this.email,
       password: password ?? this.password,
       confirmPassword: confirmPassword ?? this.confirmPassword,
-      passwordsMatch: passwordsMatch ?? this.passwordsMatch,
+      status: status ?? this.status,
     );
   }
 }
