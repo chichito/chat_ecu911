@@ -1,5 +1,5 @@
 import 'package:chat_ecu911/ui/core/ui/colors.dart';
-import 'package:chat_ecu911/ui/sign_up/cubit/cubit/sign_up_cubit.dart';
+import 'package:chat_ecu911/ui/sign_up/cubit/sign_up_cubit.dart';
 import 'package:chat_ecu911/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,18 +37,13 @@ class _SignUpPageState extends State<SignUpPage> {
         },
         listener: (context, state) {
           if (state.status == Status.passwordTooWeek) {
-            Fluttertoast.showToast(
-              msg:
-                  'La contraseña es demasiado débil. Por favor, elige una contraseña más fuerte.',
-            );
+            Fluttertoast.showToast(msg: 'Contraseña muy débil');
           } else if (state.status == Status.emailAlreadyRegistered) {
-            Fluttertoast.showToast(
-              msg: 'El correo electrónico ya está en uso.',
-            );
-          } else if (state.status == Status.success) {
-            // Navigate to the next screen
+            Fluttertoast.showToast(msg: 'Email ya registrado');
           } else if (state.status == Status.failed) {
-            // Show error message
+            Fluttertoast.showToast(
+              msg: 'Algo salió mal. Intenta nuevamente ...',
+            );
           }
         },
         child: Form(
@@ -138,19 +133,20 @@ class _SignUpPageState extends State<SignUpPage> {
         ).copyWith(bottom: 32),
         child: BlocBuilder<SignUpCubit, SignUpState>(
           builder: (context, state) {
-            //mostart el indicador de carga si el estado es loading
-            if (state.status == Status.loading) {
-              return CircularProgressIndicator.adaptive();
-            }
-
+            // Mostrar indicador de carga mientras esta en Loading
+            // if (state.status == Status.loading) {
+            //   return CircularProgressIndicator.adaptive();
+            // }
             return ElevatedButton(
-              onPressed: () {
-                final isValid = formKey.currentState?.validate() ?? false;
-                if (isValid) {
-                  // llamar al cubit para registrar al usuario
-                  cubit.createAccount();
-                }
-              },
+              onPressed: (state.status == Status.loading)
+                  ? null
+                  : () {
+                      final isValid = formKey.currentState?.validate() ?? false;
+                      if (isValid) {
+                        // llamar al cubit para registrar al usuario
+                        cubit.createAccount();
+                      }
+                    },
               child: const Text('Create an account'),
             );
           },
