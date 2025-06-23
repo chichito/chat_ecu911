@@ -29,4 +29,13 @@ class AuthRepositoryImpl extends AuthRepository {
     // Once signed in, return the UserCredential
     await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+  @override
+  Future<void> signIn(String email, String password) async {
+    UserCredential userCredential = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+          email: "barry.allen@example.com",
+          password: "SuperSecretPassword!",
+        );
+  }
 }
