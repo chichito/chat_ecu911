@@ -23,7 +23,9 @@ class LoginCubit extends Cubit<LoginState> {
       await Future.delayed(Duration(seconds: 3));
       await _authRepository.signIn(state.email!, state.password!);
       emit(state.copyWith(status: Status.success));
+      print('Login successful');
     } on FirebaseAuthException catch (e) {
+      print('Login failed: ${e.code}');
       switch (e.code) {
         default:
           emit(state.copyWith(status: Status.failed));

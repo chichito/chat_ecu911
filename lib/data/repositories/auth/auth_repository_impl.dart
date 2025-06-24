@@ -32,10 +32,13 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<void> signIn(String email, String password) async {
+    print('Signing in with email: $email and password: $password');
     UserCredential userCredential = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(
-          email: "barry.allen@example.com",
-          password: "SuperSecretPassword!",
-        );
+        .signInWithEmailAndPassword(email: email, password: password);
+  }
+
+  @override
+  Stream<User?> get currentUser {
+    return FirebaseAuth.instance.authStateChanges();
   }
 }

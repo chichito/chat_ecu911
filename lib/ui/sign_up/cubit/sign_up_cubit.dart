@@ -38,6 +38,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       await _authRepository.signUp(state.name!, state.email!, state.password!);
       emit(state.copyWith(status: Status.success));
     } on FirebaseAuthException catch (e) {
+      print('Login failed: ${e.code}');
       switch (e.code) {
         case 'weak-password':
           emit(state.copyWith(status: Status.passwordTooWeek));

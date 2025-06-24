@@ -3,6 +3,7 @@ import 'package:chat_ecu911/ui/core/navigation/app_navigator.dart';
 import 'package:chat_ecu911/ui/core/themes/theme.dart';
 import 'package:chat_ecu911/ui/login/cubit/login_cubit.dart';
 import 'package:chat_ecu911/ui/login/view/login_page.dart';
+import 'package:chat_ecu911/ui/onboarding/cubit/onboarding_cubit.dart';
 import 'package:chat_ecu911/ui/onboarding/view/onboarding_page.dart';
 import 'package:chat_ecu911/ui/sign_up/cubit/sign_up_cubit.dart';
 import 'package:chat_ecu911/ui/sign_up/view/sign_up_page.dart';
@@ -25,7 +26,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       routes: {
-        AppNavigator.main: (_) => OnboardingPage(),
+        AppNavigator.main: (_) => BlocProvider(
+          create: (context) => OnboardingCubit(),
+          child: OnboardingPage(),
+        ),
         AppNavigator.login: (_) =>
             BlocProvider(create: (context) => LoginCubit(), child: LoginPage()),
         AppNavigator.signUp: (_) => BlocProvider(
