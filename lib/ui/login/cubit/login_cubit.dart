@@ -1,5 +1,4 @@
 import 'package:chat_ecu911/data/repositories/auth/auth_repository_impl.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'login_state.dart';
@@ -17,21 +16,17 @@ class LoginCubit extends Cubit<LoginState> {
     emit(state.copyWith(password: password));
   }
 
-  void loginAccount() async {
+  Future<void> onLogin() async {
+    if (state.email == null || state.password == null) {
+      emit(state.copyWith(error: 'Email and password cannot be empty'));
+      return;
+    }
+
     try {
-      emit(state.copyWith(status: Status.loading));
-      await Future.delayed(Duration(seconds: 3));
       await _authRepository.signIn(state.email!, state.password!);
       emit(state.copyWith(status: Status.success));
-      print('Login successful');
-    } on FirebaseAuthException catch (e) {
-      print('Login failed: ${e.code}');
-      switch (e.code) {
-        default:
-          emit(state.copyWith(status: Status.failed));
-      }
     } catch (e) {
-      emit(state.copyWith(status: Status.failed));
+      emit(state.copyWith(error: e.toString(), status: Status.failure));
     }
   }
 }

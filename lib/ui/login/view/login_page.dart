@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
           return previous.status != current.status;
         },
         listener: (context, state) {
-          if (state.status == Status.failed) {
+          if (state.status == Status.failure) {
             Fluttertoast.showToast(
               msg: 'Algo salió mal. Intenta nuevamente ...',
             );
@@ -104,7 +104,16 @@ class _LoginPageState extends State<LoginPage> {
           ).copyWith(bottom: 20 + keyboardHeight),
           child: ElevatedButton(
             onPressed: () {
-              cubit.loginAccount();
+              cubit.onLogin();
+              if (cubit.state.status == Status.success) {
+                Fluttertoast.showToast(msg: 'Logging correcto');
+              } else if (cubit.state.status == Status.failure) {
+                Fluttertoast.showToast(
+                  msg: cubit.state.error ?? 'Login failed',
+                );
+              } else {
+                Fluttertoast.showToast(msg: 'Logging in...');
+              }
             },
             child: const Text('Log in'),
           ),

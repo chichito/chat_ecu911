@@ -11,6 +11,13 @@ class AuthRepositoryImpl extends AuthRepository {
     );
   }
 
+  Future<void> signIn(String email, String password) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
+
   @override
   Future<void> signInWithGoogle() async {
     // Trigger the authentication flow
@@ -28,13 +35,6 @@ class AuthRepositoryImpl extends AuthRepository {
 
     // Once signed in, return the UserCredential
     await FirebaseAuth.instance.signInWithCredential(credential);
-  }
-
-  @override
-  Future<void> signIn(String email, String password) async {
-    print('Signing in with email: $email and password: $password');
-    UserCredential userCredential = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password);
   }
 
   @override
