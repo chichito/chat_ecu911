@@ -11,6 +11,7 @@ class AuthRepositoryImpl extends AuthRepository {
     );
   }
 
+  @override
   Future<void> signIn(String email, String password) async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: email,

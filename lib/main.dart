@@ -16,6 +16,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
+
+//comando para generar la huella  dentro de la carpeta android  ./gradlew signingReport
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
