@@ -45,7 +45,9 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<void> signOut() {
-    // TODO: implement signOut
-    return FirebaseAuth.instance.signOut();
+    return Future.wait([
+      FirebaseAuth.instance.signOut(),
+      GoogleSignIn().signOut(),
+    ]);
   }
 }
