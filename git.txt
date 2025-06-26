@@ -1,0 +1,44 @@
+git config --global user.name "Fernando Cando"
+git config --global user.email "fernandocando@hotmail.com"
+git remote -v
+git config --list
+git pull //actuliza lo qu estar en el remoto al visual code
+git merge --abort
+
+listener 
+
+
+
+flutter clean
+flutter pub get
+flutter pub cache repair
+
+
+echo "# FluterPrimerHolaMundo" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/chichito/FluterPrimerHolaMundo.git
+git push -u origin main
+
+https://flutter.dev/showcase
+https://bloclibrary.dev/tutorials/flutter-counter/
+
+
+git add .
+git commit -m "mens"
+git push
+
+
+git reset --soft head~1
+
+https://www.mapbox.com
+
+Platform  Firebase App Id
+android   1:217299492091:android:99db28f8c2f5a40157245e
+ios       1:217299492091:ios:54585c53f890643757245e
+
+
+geenra el model de json
+https://quicktype.io/

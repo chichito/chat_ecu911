@@ -3,6 +3,7 @@ import 'package:chat_ecu911/ui/auth/bloc/auth_bloc.dart';
 import 'package:chat_ecu911/ui/auth/view/auth_handler.dart';
 import 'package:chat_ecu911/ui/core/navigation/app_navigator.dart';
 import 'package:chat_ecu911/ui/core/themes/theme.dart';
+import 'package:chat_ecu911/ui/home/bloc/bloc/home_bloc.dart';
 import 'package:chat_ecu911/ui/home/view/home_page.dart';
 import 'package:chat_ecu911/ui/login/cubit/login_cubit.dart';
 import 'package:chat_ecu911/ui/login/view/login_page.dart';
@@ -52,7 +53,11 @@ class MyApp extends StatelessWidget {
               create: (context) => SignUpCubit(),
               child: SignUpPage(),
             ),
-            AppNavigator.home: (_) => HomePage(),
+            AppNavigator.home: (_) => BlocProvider(
+              lazy: false,
+              create: (context) => HomeBloc()..add(GetContactsEvent()),
+              child: HomePage(),
+            ),
           },
           theme: AppTheme.light,
         ),
