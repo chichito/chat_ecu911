@@ -1,4 +1,4 @@
-import 'package:chat_ecu911/ui/home/bloc/bloc/home_bloc.dart';
+import 'package:chat_ecu911/ui/home/bloc/home_bloc.dart';
 import 'package:chat_ecu911/ui/home/widgets/chat_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

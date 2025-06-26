@@ -1,7 +1,7 @@
 import 'package:chat_ecu911/ui/auth/bloc/auth_bloc.dart';
 import 'package:chat_ecu911/ui/core/navigation/app_navigator.dart';
 import 'package:chat_ecu911/ui/core/ui/widgets/chat_avatar.dart';
-import 'package:chat_ecu911/ui/home/bloc/bloc/home_bloc.dart';
+import 'package:chat_ecu911/ui/home/bloc/home_bloc.dart';
 import 'package:chat_ecu911/ui/home/widgets/chats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
