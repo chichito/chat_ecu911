@@ -1,4 +1,5 @@
 import 'package:chat_ecu911/domain/models/contact.dart';
+import 'package:chat_ecu911/ui/core/navigation/app_navigator.dart';
 import 'package:chat_ecu911/ui/core/ui/colors.dart';
 import 'package:chat_ecu911/ui/core/ui/widgets/chat_avatar.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,9 @@ class ChatItem extends StatelessWidget {
     final colorStatus = contact.status ? Colors.green : Colors.red;
 
     return ListTile(
-      onTap: () => {},
+      onTap: () {
+        Navigator.pushNamed(context, AppNavigator.chat, arguments: contact);
+      },
       leading: ChatAvatar(name: contact.name ?? '', photoUrl: contact.photoUrl),
       title: Text(contact.name ?? ''),
       subtitle: Text(status, style: TextStyle(color: AppColors.darkGrey)),

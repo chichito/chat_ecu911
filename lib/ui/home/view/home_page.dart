@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                 // ),
                 GestureDetector(
                   onTap: () {
-                    //Navigator.pushNamed(context, AppNavigator.profile);
+                    Navigator.pushNamed(context, AppNavigator.profile);
                   },
                   child: ChatAvatar(
                     photoUrl: photoUrl,

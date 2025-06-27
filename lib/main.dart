@@ -1,6 +1,8 @@
 import 'package:chat_ecu911/firebase_options.dart';
 import 'package:chat_ecu911/ui/auth/bloc/auth_bloc.dart';
 import 'package:chat_ecu911/ui/auth/view/auth_handler.dart';
+import 'package:chat_ecu911/ui/chat/bloc/chat_bloc.dart';
+import 'package:chat_ecu911/ui/chat/view/chat_page.dart';
 import 'package:chat_ecu911/ui/core/navigation/app_navigator.dart';
 import 'package:chat_ecu911/ui/core/themes/theme.dart';
 import 'package:chat_ecu911/ui/home/bloc/home_bloc.dart';
@@ -9,6 +11,8 @@ import 'package:chat_ecu911/ui/login/cubit/login_cubit.dart';
 import 'package:chat_ecu911/ui/login/view/login_page.dart';
 import 'package:chat_ecu911/ui/onboarding/cubit/onboarding_cubit.dart';
 import 'package:chat_ecu911/ui/onboarding/view/onboarding_page.dart';
+import 'package:chat_ecu911/ui/profile/cubit/profile_cubit.dart';
+import 'package:chat_ecu911/ui/profile/view/profile_page.dart';
 import 'package:chat_ecu911/ui/root/view/root_page.dart';
 import 'package:chat_ecu911/ui/sign_up/cubit/sign_up_cubit.dart';
 import 'package:chat_ecu911/ui/sign_up/view/sign_up_page.dart';
@@ -57,6 +61,14 @@ class MyApp extends StatelessWidget {
               lazy: false,
               create: (context) => HomeBloc()..add(GetContactsEvent()),
               child: HomePage(),
+            ),
+            AppNavigator.profile: (_) => BlocProvider(
+              create: (context) => ProfileCubit(),
+              child: ProfilePage(),
+            ),
+            AppNavigator.chat: (_) => BlocProvider(
+              create: (context) => ChatBloc(),
+              child: ChatPage(),
             ),
           },
           theme: AppTheme.light,
