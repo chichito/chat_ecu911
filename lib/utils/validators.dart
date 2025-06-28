@@ -16,8 +16,9 @@ class Validators {
   // Agregar validación para la contraseña
 
   static String? validatePassword(String? password) {
-    if (password == null || password.isEmpty)
+    if (password == null || password.isEmpty) {
       return 'Ingresa una contraseña válida';
+    }
 
     // Validar que la contraseña tenga al menos 6 caracteres, una mayúscula, una minúscula y un número
     final regExpr = RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$');
